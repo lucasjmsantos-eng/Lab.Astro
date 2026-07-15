@@ -32,7 +32,7 @@
             width: 300px;
             max-width: 90%;
             height: auto;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .menu {
@@ -56,6 +56,31 @@
         }
 
         /*=========================
+             AJUSTES MOBILE
+        =========================*/
+        @media (max-width: 600px) {
+            .logo {
+                width: 250px; /* Logo maior no mobile */
+                margin-bottom: 25px;
+            }
+
+            .menu {
+                flex-direction: column; /* Menu em lista vertical */
+                align-items: center;
+                gap: 15px;
+            }
+
+            .menu a {
+                font-size: 18px; /* Fonte maior para facilitar toque */
+                padding: 5px 0;
+            }
+
+            .busca input {
+                width: 90%; /* Busca mais larga */
+            }
+        }
+
+        /*=========================
                 PESQUISA
         =========================*/
         .busca {
@@ -74,7 +99,7 @@
         }
 
         /*=========================
-              SIMULAÇÕES
+               SIMULAÇÕES
         =========================*/
         .simuladores {
             display: grid;
