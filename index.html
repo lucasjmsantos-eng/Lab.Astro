@@ -22,16 +22,37 @@
         =========================*/
         header {
             background: #0d1b2a;
-            padding: 15px; /* Reduzido de 25px */
+            padding: 20px 15px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
         }
 
         .logo {
-            width: 300px; /* Ajustado para um tamanho mais proporcional */
+            width: 300px;
             max-width: 90%;
             height: auto;
+            margin-bottom: 15px;
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .menu a:hover {
+            color: #FFD700;
         }
 
         /*=========================
@@ -39,14 +60,14 @@
         =========================*/
         .busca {
             background: #070b18;
-            padding: 15px; /* Reduzido de 25px */
+            padding: 20px;
             text-align: center;
         }
 
         .busca input {
             width: 60%;
             max-width: 700px;
-            padding: 12px; /* Ajuste leve para manter proporção */
+            padding: 12px;
             border: none;
             border-radius: 12px;
             font-size: 16px;
@@ -124,6 +145,14 @@
 
     <header>
         <img src="logo.png" alt="Logo LabAstro" class="logo">
+        <nav class="menu">
+            <a href="index.html">🛰️ Simulações</a>
+            <a href="sequencia.html">📚 Sequência Didática</a>
+            <a href="professor.html">👨‍🏫 Professor</a>
+            <a href="materiais.html">📖 Materiais</a>
+            <a href="sobre.html">ℹ️ Sobre</a>
+            <a href="contato.html">📞 Contato</a>
+        </nav>
     </header>
 
     <div class="busca">
@@ -158,4 +187,19 @@
     </footer>
 
     <script>
-        function buscar()
+        function buscar() {
+            let filtro = document.getElementById("pesquisa").value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+            let cards = document.getElementsByClassName("card");
+
+            for (let i = 0; i < cards.length; i++) {
+                let texto = cards[i].innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
+                if (texto.indexOf(filtro) > -1) {
+                    cards[i].style.display = "";
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
