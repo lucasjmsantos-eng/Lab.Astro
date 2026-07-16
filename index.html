@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LabAstro</title>
+    <title>LabAstro — Laboratório Virtual de Astronomia</title>
     <style>
+        /*=========================================
+          VARIÁVEIS DE DESIGN (TEMA ESPACIAL)
+        =========================================*/
+        :root {
+            --bg-space: #05070f;
+            --bg-header: rgba(13, 20, 38, 0.7);
+            --bg-card: rgba(19, 30, 54, 0.45);
+            --bg-input: rgba(10, 16, 31, 0.8);
+            
+            --accent-cyan: #00f0ff;
+            --accent-gold: #ffd700;
+            --accent-gold-hover: #ffc400;
+            
+            --text-primary: #ffffff;
+            --text-secondary: #b0b8c9;
+            --text-dark: #05070f;
+            
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --shadow-neon: 0 0 15px rgba(0, 240, 255, 0.25);
+            --radius-main: 16px;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /*=========================================
+          RESET & CONFIGURAÇÃO GLOBAL
+        =========================================*/
         * {
             margin: 0;
             padding: 0;
@@ -12,157 +38,251 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #050816;
-            color: white;
-        }
-
-        /*=========================
-                CABEÇALHO
-        =========================*/
-        header {
-            background: #0d1b2a;
-            padding: 20px 15px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-space);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 240, 255, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.02) 0%, transparent 40%);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /*=========================================
+          CABEÇALHO (GLASSMORPHISM)
+        =========================================*/
+        header {
+            background: var(--bg-header);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 20px 40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
-            width: 300px;
-            max-width: 90%;
+            width: 180px;
             height: auto;
-            margin-bottom: 20px;
+            transition: var(--transition-smooth);
         }
 
         .menu {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            gap: 8px;
         }
 
         .menu a {
-            color: white;
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            transition: 0.3s;
-            white-space: nowrap;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .menu a:hover {
-            color: #FFD700;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        /*=========================
-             AJUSTES MOBILE
-        =========================*/
-        @media (max-width: 600px) {
-            .logo {
-                width: 250px; /* Logo maior no mobile */
-                margin-bottom: 25px;
-            }
-
-            .menu {
-                flex-direction: column; /* Menu em lista vertical */
-                align-items: center;
-                gap: 15px;
-            }
-
-            .menu a {
-                font-size: 18px; /* Fonte maior para facilitar toque */
-                padding: 5px 0;
-            }
-
-            .busca input {
-                width: 90%; /* Busca mais larga */
-            }
-        }
-
-        /*=========================
-                PESQUISA
-        =========================*/
+        /*=========================================
+          BARRA DE PESQUISA
+        =========================================*/
         .busca {
-            background: #070b18;
-            padding: 20px;
+            padding: 40px 20px 20px;
             text-align: center;
         }
 
-        .busca input {
-            width: 60%;
-            max-width: 700px;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
+        .busca-container {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /*=========================
-               SIMULAÇÕES
-        =========================*/
+        .busca input {
+            width: 100%;
+            padding: 16px 20px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-main);
+            font-size: 16px;
+            color: var(--text-primary);
+            outline: none;
+            transition: var(--transition-smooth);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .busca input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: var(--shadow-neon), inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .busca input::placeholder {
+            color: #5a657c;
+        }
+
+        /*=========================================
+          GRID DE SIMULADORES
+        =========================================*/
         .simuladores {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-grow: 1;
+            width: 100%;
         }
 
+        /*=========================================
+          CARDS (DESIGN MODERNO)
+        =========================================*/
         .card {
-            background: #132238;
-            border-radius: 15px;
+            background: var(--bg-card);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-main);
             overflow: hidden;
-            transition: .3s;
-            box-shadow: 0 0 12px rgba(0,0,0,.35);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: #09101f;
         }
 
         .card img {
             width: 100%;
-            height: 220px;
+            height: 100%;
             object-fit: cover;
+            transition: var(--transition-smooth);
+            opacity: 0.85;
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .card-conteudo {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .card h2 {
-            text-align: center;
-            padding: 18px;
-            color: white;
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
         }
 
         .card p {
-            text-align: center;
-            padding: 0 20px 20px;
-            color: #e5e5e5;
-            line-height: 1.5;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 24px;
+            flex-grow: 1;
         }
 
+        /* Botão estilizado como pílula moderna */
         .card a {
             display: block;
             text-align: center;
-            background: #FFD700;
-            color: black;
-            padding: 15px;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 14px;
             text-decoration: none;
-            font-weight: bold;
-            transition: .3s;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.15);
         }
 
         .card a:hover {
-            background: #ffc400;
+            background: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
         }
 
-        /*=========================
-                RODAPÉ
-        =========================*/
+        /*=========================================
+          RODAPÉ
+        =========================================*/
         footer {
-            background: #0d1b2a;
+            background: var(--bg-header);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-glass);
             text-align: center;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 24px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: auto;
+        }
+
+        /*=========================================
+          MEDIA QUERIES (RESPONSIVIDADE)
+        =========================================*/
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            .logo {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .menu {
+                width: 100%;
+                flex-direction: column;
+                gap: 4px;
+            }
+            .menu a {
+                width: 100%;
+                justify-content: center;
+                font-size: 15px;
+                padding: 12px;
+            }
+            .simuladores {
+                padding: 20px;
+                gap: 20px;
+            }
+            .busca input {
+                border-radius: 12px;
+                padding: 14px 16px;
+            }
         }
     </style>
 </head>
@@ -181,50 +301,24 @@
     </header>
 
     <div class="busca">
-        <input type="text" id="pesquisa" placeholder="Pesquisar simulação..." onkeyup="buscar()">
+        <div class="busca-container">
+            <input type="text" id="pesquisa" placeholder="Pesquisar simulação espacial..." onkeyup="buscar()">
+        </div>
     </div>
 
-    <section class="simuladores" id="lista">
-        <div class="card">
-            <img src="canhao-newton.png" alt="Canhão de Newton">
-            <h2>Canhão de Newton</h2>
-            <p>Experimento mental criado por Isaac Newton para demonstrar a formação das órbitas.</p>
-            <a href="canhao-newton.html">Abrir Simulação</a>
-        </div>
+    <main>
+        <section class="simuladores" id="lista">
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="canhao-newton.png" alt="Canhão de Newton">
+                </div>
+                <div class="card-conteudo">
+                    <h2>Canhão de Newton</h2>
+                    <p>Experimento mental criado por Isaac Newton para demonstrar a formação das órbitas através do lançamento de projéteis.</p>
+                    <a href="canhao-newton.html">Abrir Simulação</a>
+                </div>
+            </div>
 
-        <div class="card">
-            <img src="orbitas.png" alt="Órbitas">
-            <h2>Análise de Órbitas</h2>
-            <p>Estude órbitas circulares, elípticas, parabólicas e hiperbólicas.</p>
-            <a href="orbitas.html">Abrir Simulação</a>
-        </div>
-
-        <div class="card">
-            <img src="gravitacao.png" alt="Gravitação">
-            <h2>Gravitação</h2>
-            <p>Simule a interação gravitacional entre dois corpos e investigue seus movimentos.</p>
-            <a href="gravidade.html">Abrir Simulação</a>
-        </div>
-    </section>
-
-    <footer>
-        © 2026 LabAstro — Laboratório Virtual de Astronomia
-    </footer>
-
-    <script>
-        function buscar() {
-            let filtro = document.getElementById("pesquisa").value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
-            let cards = document.getElementsByClassName("card");
-
-            for (let i = 0; i < cards.length; i++) {
-                let texto = cards[i].innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
-                if (texto.indexOf(filtro) > -1) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+            <div class="card">
+                <div class="card-img-wrapper">
+                    <img src="orbitas.png" alt="Órbitas">
