@@ -4,236 +4,329 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LabAstro</title>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #050816;
-            color: white;
+        body{
+            font-family:Arial, Helvetica, sans-serif;
+            background:#050816;
+            color:white;
         }
 
         /*=========================
                 CABEÇALHO
         =========================*/
-        header {
-            background: #0d1b2a;
-            padding: 20px 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        header{
+            background:#0d1b2a;
+            padding:20px 15px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
         }
 
-        .logo {
-            width: 300px;
-            max-width: 90%;
-            height: auto;
-            margin-bottom: 20px;
+        .logo{
+            width:300px;
+            max-width:90%;
+            height:auto;
+            margin-bottom:20px;
         }
 
-        .menu {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        .menu{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:20px;
         }
 
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.3s;
-            white-space: nowrap;
+        .menu a{
+            color:white;
+            text-decoration:none;
+            font-size:14px;
+            font-weight:500;
+            transition:.3s;
+            white-space:nowrap;
         }
 
-        .menu a:hover {
-            color: #FFD700;
+        .menu a:hover{
+            color:#FFD700;
         }
 
         /*=========================
-             AJUSTES MOBILE
+               RESPONSIVO
         =========================*/
-        @media (max-width: 600px) {
-            .logo {
-                width: 250px; /* Logo maior no mobile */
-                margin-bottom: 25px;
+
+        @media(max-width:600px){
+
+            .logo{
+                width:250px;
+                margin-bottom:25px;
             }
 
-            .menu {
-                flex-direction: column; /* Menu em lista vertical */
-                align-items: center;
-                gap: 15px;
+            .menu{
+                flex-direction:column;
+                gap:15px;
             }
 
-            .menu a {
-                font-size: 18px; /* Fonte maior para facilitar toque */
-                padding: 5px 0;
+            .menu a{
+                font-size:18px;
             }
 
-            .busca input {
-                width: 90%; /* Busca mais larga */
+            .busca input{
+                width:90%;
             }
+
         }
 
         /*=========================
                 PESQUISA
         =========================*/
-        .busca {
-            background: #070b18;
-            padding: 20px;
-            text-align: center;
+
+        .busca{
+            background:#070b18;
+            padding:20px;
+            text-align:center;
         }
 
-        .busca input {
-            width: 60%;
-            max-width: 700px;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-        }
-
-        /*=========================
-               SIMULAÇÕES
-        =========================*/
-        .simuladores {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 25px;
-        }
-
-        .card {
-            background: #132238;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: .3s;
-            box-shadow: 0 0 12px rgba(0,0,0,.35);
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .card h2 {
-            text-align: center;
-            padding: 18px;
-            color: white;
-            font-size: 20px;
-        }
-
-        .card p {
-            text-align: center;
-            padding: 0 20px 20px;
-            color: #e5e5e5;
-            line-height: 1.5;
-        }
-
-        .card a {
-            display: block;
-            text-align: center;
-            background: #FFD700;
-            color: black;
-            padding: 15px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: .3s;
-        }
-
-        .card a:hover {
-            background: #ffc400;
+        .busca input{
+            width:60%;
+            max-width:700px;
+            padding:12px;
+            border:none;
+            border-radius:12px;
+            font-size:16px;
         }
 
         /*=========================
-                RODAPÉ
+             CARDS
         =========================*/
-        footer {
-            background: #0d1b2a;
-            text-align: center;
-            padding: 20px;
-            margin-top: 20px;
+
+        .simuladores{
+
+            display:grid;
+
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+            gap:20px;
+
+            padding:25px;
+
         }
+
+        .card{
+
+            background:#132238;
+
+            border-radius:15px;
+
+            overflow:hidden;
+
+            transition:.3s;
+
+            box-shadow:0 0 12px rgba(0,0,0,.35);
+
+        }
+
+        .card:hover{
+
+            transform:translateY(-5px);
+
+        }
+
+        .card img{
+
+            width:100%;
+
+            height:220px;
+
+            object-fit:cover;
+
+        }
+
+        .card h2{
+
+            text-align:center;
+
+            padding:18px;
+
+            color:white;
+
+        }
+
+        .card p{
+
+            text-align:center;
+
+            padding:0 20px 20px;
+
+            line-height:1.5;
+
+            color:#ececec;
+
+            min-height:90px;
+
+        }
+
+        .card a{
+
+            display:block;
+
+            background:#FFD700;
+
+            color:black;
+
+            text-align:center;
+
+            padding:15px;
+
+            text-decoration:none;
+
+            font-weight:bold;
+
+        }
+
+        .card a:hover{
+
+            background:#ffc400;
+
+        }
+
+        footer{
+
+            background:#0d1b2a;
+
+            text-align:center;
+
+            padding:20px;
+
+            margin-top:20px;
+
+        }
+
     </style>
+
 </head>
+
 <body>
 
-    <header>
-        <img src="logo.png" alt="Logo LabAstro" class="logo">
-        <nav class="menu">
-            <a href="index.html">🛰️ Simulações</a>
-            <a href="sequencia.html">📚 Sequência Didática</a>
-            <a href="professor.html">👨‍🏫 Professor</a>
-            <a href="materiais.html">📖 Materiais</a>
-            <a href="sobre.html">ℹ️ Sobre</a>
-            <a href="contato.html">📞 Contato</a>
-        </nav>
-    </header>
+<header>
 
-    <div class="busca">
-        <input type="text" id="pesquisa" placeholder="Pesquisar simulação..." onkeyup="buscar()">
+    <img src="logo.png" class="logo" alt="LabAstro">
+
+    <nav class="menu">
+
+        <a href="index.html">🛰️ Simulações</a>
+
+        <a href="sequencia.html">📚 Sequência Didática</a>
+
+        <a href="professor.html">👨‍🏫 Professor</a>
+
+        <a href="materiais.html">📖 Materiais</a>
+
+        <a href="sobre.html">ℹ️ Sobre</a>
+
+        <a href="contato.html">📞 Contato</a>
+
+    </nav>
+
+</header>
+
+<div class="busca">
+
+<input
+type="text"
+id="pesquisa"
+placeholder="Pesquisar simulação..."
+onkeyup="buscar()">
+
+</div>
+
+<section class="simuladores" id="lista">
+
+    <div class="card">
+        <img src="canhao-newton.png" alt="Canhão de Newton">
+        <h2>Canhão de Newton</h2>
+        <p>
+            Experimento mental criado por Isaac Newton para demonstrar a formação das órbitas.
+        </p>
+        <a href="canhao-newton.html">Abrir Simulação</a>
     </div>
 
-    <section class="simuladores" id="lista">
-        <div class="card">
-            <img src="canhao-newton.png" alt="Canhão de Newton">
-            <h2>Canhão de Newton</h2>
-            <p>Experimento mental criado por Isaac Newton para demonstrar a formação das órbitas.</p>
-            <a href="canhao-newton.html">Abrir Simulação</a>
-        </div>
+    <div class="card">
+        <img src="orbitas.png" alt="Órbitas">
+        <h2>Análise de Órbitas</h2>
+        <p>
+            Estude órbitas circulares, elípticas, parabólicas e hiperbólicas.
+        </p>
+        <a href="orbitas.html">Abrir Simulação</a>
+    </div>
 
-        <div class="card">
-            <img src="orbitas.png" alt="Órbitas">
-            <h2>Análise de Órbitas</h2>
-            <p>Estude órbitas circulares, elípticas, parabólicas e hiperbólicas.</p>
-            <a href="orbitas.html">Abrir Simulação</a>
-        </div>
+    <div class="card">
+        <img src="gravitacao.png" alt="Gravitação">
+        <h2>Gravitação</h2>
+        <p>
+            Simule a interação gravitacional entre dois corpos e investigue seus movimentos.
+        </p>
+        <a href="gravidade.html">Abrir Simulação</a>
+    </div>
 
-        <div class="card">
-            <img src="gravitacao.png" alt="Gravitação">
-            <h2>Gravitação</h2>
-            <p>Simule a interação gravitacional entre dois corpos e investigue seus movimentos.</p>
-            <a href="gravidade.html">Abrir Simulação</a>
-        </div>
-
-        <div class="card">
+    <div class="card">
         <img src="gravitacao.png" alt="Formação de Planetesimais">
         <h2>Formação de Planetesimais</h2>
         <p>
             Observe como pequenos asteroides interagem pela gravidade, colidem e formam corpos cada vez maiores durante a formação dos planetas.
         </p>
         <a href="planitesimal.html">Abrir Simulação</a>
-        </div>
-    </section>
+    </div>
 
-    <footer>
-        © 2026 LabAstro — Laboratório Virtual de Astronomia
-    </footer>
+</section>
 
-    <script>
-        function buscar() {
-            let filtro = document.getElementById("pesquisa").value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
-            let cards = document.getElementsByClassName("card");
+<footer>
+    © 2026 LabAstro — Laboratório Virtual de Astronomia
+</footer>
 
-            for (let i = 0; i < cards.length; i++) {
-                let texto = cards[i].innerText.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toUpperCase();
-                if (texto.indexOf(filtro) > -1) {
-                    cards[i].style.display = "";
-                } else {
-                    cards[i].style.display = "none";
-                }
-            }
+<script>
+
+function buscar(){
+
+    let filtro = document
+        .getElementById("pesquisa")
+        .value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .toUpperCase();
+
+    let cards = document.getElementsByClassName("card");
+
+    for(let i=0;i<cards.length;i++){
+
+        let texto = cards[i]
+            .innerText
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g,"")
+            .toUpperCase();
+
+        if(texto.indexOf(filtro)>-1){
+
+            cards[i].style.display="";
+
+        }else{
+
+            cards[i].style.display="none";
+
         }
-    </script>
+
+    }
+
+}
+
+</script>
+
 </body>
 </html>
